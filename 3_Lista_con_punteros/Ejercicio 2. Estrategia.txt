@@ -1,0 +1,17 @@
+Modificar el ejercicio 1 para que se puedan realizar todas las operaciones básicas para el manejo de una lista enlazada:
+
+a) Generar o inicializar la lista.
+
+b) Función para determinar si una lista está vacía.
+
+c) Insertar el primer producto (nodo) de la lista.
+
+d) Insertar un producto al principio de la lista.
+
+e) Eliminar el primer producto de la lista.
+
+f) Insertar un producto en una determinada posición dentro de la lista.
+
+g) Eliminar un producto de una determinada posición de la lista.
+
+h) Visualizar todos los datos de los productos que están en la lista.

@@ -1,0 +1,25 @@
+Un Instituto médico realiza una encuesta sobre nutrición. Para procesar los datos de los encuestados requiere un sistema que 
+
+implemente una lista enlazada. 
+
+Para ello se capturan los siguientes datos: 
+.código de sexo (F. Femenino, M. Masculino), 
+.código de rango de edad (01. Menor de 15 años, 02. Entre 15 y 30 años, 03. Más de 30 años), 
+.peso y 
+.altura. 
+
+El sistema debe calcular el IMC (índice de masa corporal) antes de insertar un elemento en la lista, y 
+almacenar la clasificación del IMC (string) como parte contenida de cada nodo.
+
+Se solicita realizar las funciones necesarias para que los usuarios del sistema puedan obtener los siguientes informes:
+a) La cantidad total de encuestados. UN CONTADOR PARA LOS ENCUESTADOS
+b) El promedio de pesos de las personas de peso bajo, que sean menores de 15 años.
+c) Un listado de los datos correspondientes a las personas que tienen sobrepeso.
+
+ESTRATEGIA
+1.crear la estructura de datos que pide el enunciado
+1. declarar las variables que se requieran para ejecutar el programa
+3. implementar una funcion que retorne calcule el IMC. Mas un contador en string de los IMC
+4. implementar una funcion que acumule el total de encuestados.
+5. una funcion que retorne el promedio delas personas de bajo peso, que sean menores de 15 años
+6. implmentar una funcion que muestra los datos de las personas con sobrepreso.
