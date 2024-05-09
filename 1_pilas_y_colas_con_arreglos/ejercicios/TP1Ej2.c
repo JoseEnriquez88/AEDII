@@ -204,7 +204,6 @@ void visualizarElementos(tPila pPila)
   int i;
   for (i = 0; i <= pPila.tope; i++)
   {
-
     printf("\t\nPulgadas: %.2f.\nMarca: %c. \n", pPila.pilaTelevisores[i].pulgadas, pPila.pilaTelevisores[i].marcaTV);
   }
 };
