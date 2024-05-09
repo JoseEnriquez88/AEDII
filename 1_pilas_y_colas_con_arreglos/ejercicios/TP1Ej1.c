@@ -45,7 +45,7 @@ void menu()
 	printf("\t5. Mostrar la cantidad de discos apilados\n");
 	printf("\t6. Calcular el promedio de pesos de los discos en la pila\n");
 	printf("\t0. Salir\n");
-	printf("\n\tSeleccione una opcin: ");
+	printf("\n\tSeleccione una opción: ");
 };
 
 void iniciarPrograma()
@@ -117,7 +117,7 @@ void cargarPila()
 {
 	if (pila.tope == MAX_DISCOS - 1)
 	{
-		printf("La pila est� llena. No se pueden agregar m�s discos.\n");
+		printf("La pila está llena. No se pueden agregar más discos.\n");
 		return;
 	}
 
@@ -175,7 +175,7 @@ void calcularPromedio()
 {
 	if (pila.tope == -1)
 	{
-		printf("La pila esta vac�a. No se puede calcular el promedio de pesos.\n");
+		printf("La pila esta vacía. No se puede calcular el promedio de pesos.\n");
 		return;
 	}
 	int i;
