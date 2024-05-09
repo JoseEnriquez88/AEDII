@@ -1,12 +1,12 @@
-/*Se tiene registrada la información sobre las notas de los exámenes finales de los alumnos 
-de la facultad durante el presente año, en un archivo ordenado en forma ascendente por número 
+/*Se tiene registrada la informaciï¿½n sobre las notas de los exï¿½menes finales de los alumnos 
+de la facultad durante el presente aï¿½o, en un archivo ordenado en forma ascendente por nï¿½mero 
 de libreta. De cada alumno se conoce el:
 
-Número de Libreta  Nombre y apellido   Código de Materia   Nota Obtenida
+Nï¿½mero de Libreta  Nombre y apellido   Cï¿½digo de Materia   Nota Obtenida
 (entero)       	   ( char [50] )       (entero)            (real)
 
 Se pide:
-a) Listar un renglón por alumno con el promedio de notas obtenida.
+a) Listar un renglï¿½n por alumno con el promedio de notas obtenida.
 b) Informar el total de alumnos.
 c) Informar el alumno con mejor nota promedio
 El formato de salida requerido es:
@@ -33,7 +33,7 @@ tr_alumnos vr_alumnos;
 int numLibretAnt;
 
 int totalAlumnos;
-float promedioNotas
+float promedioNotas;
 
 void inicializacion(){
 	vf_alumnos = fopen("alumnos.dat", "rb");
@@ -50,7 +50,7 @@ void inicializacion(){
 
 void procesoCorte(){
 	while(!feof(vf_alumnos)){
-		principioCorte(),
+		principioCorte();
 		while(!feof(vf_alumnos) && vr_alumnos.numLibreta == numLibretAnt){
 		unAlumno();
 		fread(&vr_alumnos, sizeof(tr_alumnos), 1, vf_alumnos); 	
