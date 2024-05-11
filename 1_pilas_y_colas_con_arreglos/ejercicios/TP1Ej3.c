@@ -131,7 +131,7 @@ void apilar(Contenedor pContenedor)
 
 void desapilar()
 {
-  pilaVacia(pila) ? printf("\nPila vacía.") : (pila.tope--, printf("\nTelevisor quitado de la pila con éxito."));
+  pilaVacia(pila) ? printf("\nPila de libro vacia.") : (pila.tope--, printf("\nEl libro fue quitado de la pila."));
 };
 
 Contenedor cima(tPila pPila)

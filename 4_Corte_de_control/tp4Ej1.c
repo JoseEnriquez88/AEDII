@@ -8,7 +8,7 @@ typedef char tString[50];
 typedef struct{
 	int numCuenta;
  	tString nombreCliente[50];
- 	int codOperacion; /*1-Depósito...2-Extracción*/ 
+ 	int codOperacion; /*1-Depï¿½sito...2-Extracciï¿½n*/ 
  	float importe;
 }tRegistroCuenta;
 
@@ -82,7 +82,7 @@ void principioCorte(){
 void unCuenta(){
 	cantMovimientos = cantMovimientos + 1;
 	printf("***DETALLE DE MOVIMIENTOS POR CUENTA***");
-	printf("Nro. Cuenta\tDepósito\tExtracción");
+	printf("Nro. Cuenta\tDepï¿½sito\tExtracciï¿½n");
 	calOperacion();
 	
 }
