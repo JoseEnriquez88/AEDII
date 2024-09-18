@@ -1,5 +1,5 @@
-/*Se tiene registrada la informaci�n sobre las notas de los ex�menes finales de los alumnos 
-de la facultad durante el presente a�o, en un archivo ordenado en forma ascendente por n�mero 
+/*Se tiene registrada la informaci�n sobre las notas de los ex�menes finales de los alumnos
+de la facultad durante el presente a�o, en un archivo ordenado en forma ascendente por n�mero
 de libreta. De cada alumno se conoce el:
 
 N�mero de Libreta  Nombre y apellido   C�digo de Materia   Nota Obtenida
@@ -14,20 +14,21 @@ El formato de salida requerido es:
 
 */
 
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 typedef char tString[50];
 
-typedef struct{
+typedef struct
+{
 	int numLibreta;
 	tString nombreCompleto;
 	int codMateria;
 	float notaObtenida;
-}tr_alumnos;
+} tr_alumnos;
 
-FILE * vf_alumnos;
+FILE *vf_alumnos;
 tr_alumnos vr_alumnos;
 
 int numLibretAnt;
@@ -35,48 +36,55 @@ int numLibretAnt;
 int totalAlumnos;
 float promedioNotas;
 
-void inicializacion(){
+void inicializacion()
+{
 	vf_alumnos = fopen("alumnos.dat", "rb");
-	
-	if(vf_alumnos != NULL){
+
+	if (vf_alumnos != NULL)
+	{
 		printf("Archivo abierto.\n\n");
-	}else{
+	}
+	else
+	{
 		printf("\Archivo inexistente.\n\n");
 		exit(EXIT_FAILURE);
 	}
-	
-	fread(&vr_alumnos, sizeof(tr_alumnos), 1, vf_alumnos); 
+
+	fread(&vr_alumnos, sizeof(tr_alumnos), 1, vf_alumnos);
 }
 
-void procesoCorte(){
-	while(!feof(vf_alumnos)){
+void procesoCorte()
+{
+	while (!feof(vf_alumnos))
+	{
 		principioCorte();
-		while(!feof(vf_alumnos) && vr_alumnos.numLibreta == numLibretAnt){
-		unAlumno();
-		fread(&vr_alumnos, sizeof(tr_alumnos), 1, vf_alumnos); 	
+		while (!feof(vf_alumnos) && vr_alumnos.numLibreta == numLibretAnt)
+		{
+			unAlumno();
+			fread(&vr_alumnos, sizeof(tr_alumnos), 1, vf_alumnos);
 		}
 		finCorte();
 	}
 }
 
-void finalizacion(){
-	
+void finalizacion()
+{
 }
 
-void principioCorte(){
-	promedioNotas = 0; 
+void principioCorte()
+{
+	promedioNotas = 0;
 	totalAlumnos = 0;
-	
+
 	numLibretAnt = vr_alumnos.numLibreta;
 }
 
-void unAlumno(){
-	
+void unAlumno()
+{
 }
 
-void finCorte(){
-	
+void finCorte()
+{
+
 	fclose(vf_alumnos);
 }
-
-
