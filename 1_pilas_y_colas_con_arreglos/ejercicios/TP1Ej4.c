@@ -65,7 +65,7 @@ void menu()
   printf("\n\t1. Registrar los datos del libro y apilar.");
   printf("\n\t2. Listar los ultimos 5 libros apilados.");
   printf("\n\t3. Solicitar libro para quitar de la pila.");
-  printf("\n\n4. Mostrar libro que se encuentra en el tope de la pila.");
+  printf("\n\t4. Mostrar libro que se encuentra en el tope de la pila.");
   printf("\n\t0. Salir.");
   printf("\n\n\tSeleccione una opcion: ");
 };
@@ -117,11 +117,11 @@ void ingresarDatos()
     printf("\t\n\nLa pila de libros se encuentra llena. No se pueden apilar mas libros por el momento.");
   Libros nuevoLibro;
   printf("\n\tIngrese el ISBN del libro: ");
-  scanf("%[^\n]", &nuevoLibro.ISBN);
+  scanf('%[^\n]', &nuevoLibro.ISBN);
   printf("\n\tIngrese el titulo del libro: ");
-  scanf("%[^\n]", &nuevoLibro.titulo);
+  scanf('%[^\n]', &nuevoLibro.titulo);
   printf("\n\tIngrese la editorial del libro: ");
-  scanf("%[^\n]", &nuevoLibro.editorial);
+  scanf('%[^\n]', &nuevoLibro.editorial);
   apilar(nuevoLibro);
 };
 
