@@ -5,14 +5,15 @@
 
 typedef char tString[50];
 
-typedef struct{
+typedef struct
+{
 	int numCuenta;
- 	tString nombreCliente[50];
- 	int codOperacion; /*1-Dep�sito...2-Extracci�n*/ 
- 	float importe;
-}tRegistroCuenta;
+	tString nombreCliente[50];
+	int codOperacion; /*1-Dep�sito...2-Extracci�n*/
+	float importe;
+} tRegistroCuenta;
 
-FILE * cuenta;
+FILE *cuenta;
 tRegistroCuenta regCuenta;
 
 int numCuentAnt; /*esta variable se controla en while*/
@@ -29,35 +30,40 @@ void unCuenta();
 void finCorte();
 void calOperacion();
 
-int main(){
+int main()
+{
 	inicializacion();
 	procesoCorte();
 	finalizacion();
-	
+
 	return 0;
 }
 
-void inicializacion(){
+void inicializacion()
+{
 	setlocale(LC_ALL, "spanish");
 	cuenta = fopen("Cuentas.dat", "rb");
 
-	if(cuenta != NULL){
+	if (cuenta != NULL)
+	{
 		printf("\nArchivo abierto\n\n");
-	}else{
+	}
+	else
+	{
 		printf("Archivo inexistente\n");
 		exit(EXIT_FAILURE);
 	}
-	
-	fread(&regCuenta, sizeof(tRegistroCuenta), 1, cuenta);
-	
 
-	
+	fread(&regCuenta, sizeof(tRegistroCuenta), 1, cuenta);
 }
 
-void procesoCorte(){
-	while(!feof(cuenta)){
+void procesoCorte()
+{
+	while (!feof(cuenta))
+	{
 		principioCorte();
-		while(!feof(cuenta) && regCuenta.numCuenta == numCuentAnt){
+		while (!feof(cuenta) && regCuenta.numCuenta == numCuentAnt)
+		{
 			unCuenta();
 			fread(&regCuenta, sizeof(tRegistroCuenta), 1, cuenta);
 		}
@@ -65,44 +71,51 @@ void procesoCorte(){
 	}
 }
 
-void finalizacion(){
-	
-	
+void finalizacion()
+{
+
 	fclose(cuenta);
 }
 
-void principioCorte(){
+void principioCorte()
+{
 	cantMovimientos = 0;
 	totalImporDeposito = 0;
 	totalImporExtraccion = 0;
-	
+
 	numCuentAnt = regCuenta.numCuenta;
 }
 
-void unCuenta(){
+void unCuenta()
+{
 	cantMovimientos = cantMovimientos + 1;
 	printf("***DETALLE DE MOVIMIENTOS POR CUENTA***");
 	printf("Nro. Cuenta\tDep�sito\tExtracci�n");
 	calOperacion();
-	
 }
 
-void finCorte(){
+void finCorte()
+{
 	printf("Total de movimientos de la cuenta %d: %d", regCuenta.numCuenta);
 }
 
-void calOperacion(){
-	
-	if(regCuenta.codOperacion == 1){
+void calOperacion()
+{
+
+	if (regCuenta.codOperacion == 1)
+	{
 		cantMovimientos++;
 		totalImporDeposito = totalImporDeposito + regCuenta.importe;
 		printf("\n%d\t%f", regCuenta.numCuenta, regCuenta.importe);
 	}
-	else if(regCuenta.codOperacion == 2){
+	else if (regCuenta.codOperacion == 2)
+	{
 		cantMovimientos++;
 		totalImporExtraccion = totalImporExtraccion + regCuenta.importe;
 		printf("\n%d\t\t\t%f", regCuenta.numCuenta, regCuenta.importe);
-	}else{
+	}
+	else
+	{
 		printf("\nCodigo incorrecto. Digite de nuevo.\n");
 	}
 }
