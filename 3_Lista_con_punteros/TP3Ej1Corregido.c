@@ -1,23 +1,24 @@
-#include<stdio.h>
-#include<stdbool.h>
-#include<string.h>
-#include<stdlib.h>
-#include<locale.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdlib.h>
+#include <locale.h>
 
-typedef struct{
+typedef struct
+{
 	long codProducto;
-	char descripcion[80]; 
+	char descripcion[80];
 	float precioUnitario;
-}tDato;
+} tDato;
 
-typedef struct nodo{
+typedef struct nodo
+{
 	tDato datos;
 	struct nodo *siguiente;
-}tListaProductos;
+} tListaProductos;
 
 tDato productos;
-tListaProductos * listaProducto;
-
+tListaProductos *listaProducto;
 
 void crearLista();
 bool listaVacia(tListaProductos *);
@@ -32,121 +33,135 @@ void menu();
 void mostrarMenu();
 void agregarDatosProductos();
 
-int main(){
+int main()
+{
 	iniciarPrograma();
 	return 0;
 }
 
-void crearLista(){
+void crearLista()
+{
 	listaProducto = NULL;
 }
 
-bool listaVacia(tListaProductos * pListaProducto){
+bool listaVacia(tListaProductos *pListaProducto)
+{
 	return (pListaProducto == NULL);
 }
 
-void insertarProducto(tDato pDato){
-	if(listaVacia(listaProducto)){
+void insertarProducto(tDato pDato)
+{
+	if (listaVacia(listaProducto))
+	{
 		insertarPrimero(pDato);
-	}else{
+	}
+	else
+	{
 		insertarAdelante(pDato, listaProducto);
-	}	
+	}
 }
 
 void eliminarProducto(); /*NO PIDE IMPLEMENTACION*/
 
-void mostrarProducto(tListaProductos *pListaProductos){
-	tListaProductos * aux;
+void mostrarProducto(tListaProductos *pListaProductos)
+{
+	tListaProductos *aux;
 	aux = pListaProductos;
-	
-	if(!listaVacia(aux)){
+
+	if (!listaVacia(aux))
+	{
 		printf("\n\t\t---PRODUCTOS EN LA LISTA---\n\n");
-		while(aux != NULL){
-			printf("Codigo producto: %ld\nDescripción: %s\nPrecio: %.2f\n\n", aux->datos.codProducto, aux->datos.descripcion, aux->datos.precioUnitario);
+		while (aux != NULL)
+		{
+			printf("Codigo producto: %ld\nDescripciï¿½n: %s\nPrecio: %.2f\n\n", aux->datos.codProducto, aux->datos.descripcion, aux->datos.precioUnitario);
 			aux = aux->siguiente;
 		}
-	}else{
+	}
+	else
+	{
 		printf("\n\t\tNO HAY PRODUCTOS EN LA LISTA.\n\n");
 	}
 	printf("\n\n");
-}						
+}
 
-void insertarPrimero(tDato pDato){
-	tListaProductos * nuevoNodo;
-	nuevoNodo = (tListaProductos*)malloc(sizeof(tListaProductos));
+void insertarPrimero(tDato pDato)
+{
+	tListaProductos *nuevoNodo;
+	nuevoNodo = (tListaProductos *)malloc(sizeof(tListaProductos));
 	nuevoNodo->datos = pDato;
 	nuevoNodo->siguiente = listaProducto;
 	listaProducto = nuevoNodo;
 	printf("\nProducto agregado a la lista.\n\n");
 }
 
-void insertarAdelante(tDato pDato, tListaProductos *pListaProductos){
-	tListaProductos * nuevoNodo;
-	nuevoNodo = (tListaProductos*)malloc(sizeof(tListaProductos));
+void insertarAdelante(tDato pDato, tListaProductos *pListaProductos)
+{
+	tListaProductos *nuevoNodo;
+	nuevoNodo = (tListaProductos *)malloc(sizeof(tListaProductos));
 	nuevoNodo->datos = pDato;
 	nuevoNodo->siguiente = listaProducto;
 	listaProducto = nuevoNodo;
-	printf("\nProducto agregado adelante de la lista.\n\n");	
+	printf("\nProducto agregado adelante de la lista.\n\n");
 }
 
-
-void iniciarPrograma(){
+void iniciarPrograma()
+{
 	setlocale(LC_ALL, "spanish");
 	crearLista();
 	mostrarMenu();
 }
 
-void menu(){
+void menu()
+{
 	printf("\t\tMENU");
-	printf("\n1.Agregar producto.\n2.Mostrar productos.\n3.Salir del menu.\n\nDigite una opción: ");
+	printf("\n1.Agregar producto.\n2.Mostrar productos.\n3.Salir del menu.\n\nDigite una opciï¿½n: ");
 }
 
-void mostrarMenu(){
-	int opcion=0;
-	do{
+void mostrarMenu()
+{
+	int opcion = 0;
+	do
+	{
 		menu();
 		scanf("%d", &opcion);
-		
-		switch(opcion){
-			case 1:
-					agregarDatosProductos();
-					printf("\n\n");
-					system("pause");
-					break;
-			case 2:
-					mostrarProducto(listaProducto);
-					printf("\n\n");
-					system("pause");
-					break;
-			case 3:
-					printf("\n\t\tSALIENDO DEL MENU...");
-					printf("\n\n");
-					system("pause");
-					break;
-			default:
-					printf("\n\t\t---OPCIÓN INCORRECTA. DIGITE SOLO LAS OPCIONES DADAS EN EL MENU---");
-					printf("\n\n");
-					system("pause");
-					break;
+
+		switch (opcion)
+		{
+		case 1:
+			agregarDatosProductos();
+			printf("\n\n");
+			system("pause");
+			break;
+		case 2:
+			mostrarProducto(listaProducto);
+			printf("\n\n");
+			system("pause");
+			break;
+		case 3:
+			printf("\n\t\tSALIENDO DEL MENU...");
+			printf("\n\n");
+			system("pause");
+			break;
+		default:
+			printf("\n\t\t---OPCIï¿½N INCORRECTA. DIGITE SOLO LAS OPCIONES DADAS EN EL MENU---");
+			printf("\n\n");
+			system("pause");
+			break;
 		}
 		system("cls");
-	}while(opcion != 3);
+	} while (opcion != 3);
 }
 
-void agregarDatosProductos(){
+void agregarDatosProductos()
+{
 	tDato producto;
-	
+
 	printf("\nDigite codigo del producto: ");
 	scanf("%ld", &producto.codProducto);
-	printf("\nDigite descripción del producto: ");
+	printf("\nDigite descripciï¿½n del producto: ");
 	fflush(stdin);
 	scanf("%[^\n]s", &producto.descripcion);
 	printf("\nDigite precio del producto: ");
 	scanf("%f", &producto.precioUnitario);
-	insertarProducto(producto); 
+	insertarProducto(producto);
 }
-
-
-
-
-
