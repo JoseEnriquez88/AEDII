@@ -1,9 +1,9 @@
-/*Luego escriba un programa en “C” que permita probar ambas funciones del TDA (área y perímetro), 
-el programa que prueba el TDA debe aceptar el ingreso de dos variables (base y altura), 
+/*Luego escriba un programa en ï¿½Cï¿½ que permita probar ambas funciones del TDA (ï¿½rea y perï¿½metro),
+el programa que prueba el TDA debe aceptar el ingreso de dos variables (base y altura),
 invocar ambas funciones, y mostrar el resultado de las operaciones del TDA*/
 
-#include<stdio.h>
-#include<locale.h>
+#include <stdio.h>
+#include <locale.h>
 #include "operacionesRectangulo.h"
 
 void ingresarDatos();
@@ -12,30 +12,34 @@ void iniciarPrograma();
 
 float base, altura;
 
-int main(){
+int main()
+{
 	iniciarPrograma();
 	return 0;
 }
 
-void ingresarDatos(){
-	printf("Digite la base del rectángulo: ");
+void ingresarDatos()
+{
+	printf("Digite la base del rectï¿½ngulo: ");
 	scanf("%f", &base);
-	printf("\nDigite la altura del rectángulo: ");
+	printf("\nDigite la altura del rectï¿½ngulo: ");
 	scanf("%f", &altura);
-	
+
 	calcularPerimetro(base, altura);
 	calcularArea(base, altura);
 }
 
-void mostrarResultados(){
-	/*mostrando resultado de perímetro*/
-	printf("\n\nEl perímetro del rectángulo es: %.2f", calcularPerimetro(base, altura));
+void mostrarResultados()
+{
+	/*mostrando resultado de perï¿½metro*/
+	printf("\n\nEl perï¿½metro del rectï¿½ngulo es: %.2f", calcularPerimetro(base, altura));
 
-	/*mostrando resultado de área*/
-	printf("\nEl área del rectángulo es: %.2f", calcularArea(base, altura));
+	/*mostrando resultado de ï¿½rea*/
+	printf("\nEl ï¿½rea del rectï¿½ngulo es: %.2f", calcularArea(base, altura));
 }
 
-void iniciarPrograma(){
+void iniciarPrograma()
+{
 	setlocale(LC_ALL, "spanish");
 	ingresarDatos();
 	mostrarResultados();
