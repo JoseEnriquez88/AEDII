@@ -1,27 +1,27 @@
-/*Desarrollar un TDA “operacionesRectangulo” que declare y defina (implemente):
+/*Desarrollar un TDA ï¿½operacionesRectanguloï¿½ que declare y defina (implemente):
 
-a) una función para calcular el perímetro
+a) una funciï¿½n para calcular el perï¿½metro
 
-b) una función para calcular el área
+b) una funciï¿½n para calcular el ï¿½rea
 
-Luego escriba un programa en “C” que permita probar ambas funciones del TDA (área y perímetro), 
-el programa que prueba el TDA debe aceptar el ingreso de dos variables (base y altura), 
+Luego escriba un programa en ï¿½Cï¿½ que permita probar ambas funciones del TDA (ï¿½rea y perï¿½metro),
+el programa que prueba el TDA debe aceptar el ingreso de dos variables (base y altura),
 invocar ambas funciones, y mostrar el resultado de las operaciones del TDA.*/
 
-#include<stdio.h>
-#include<math.h>
+#include <stdio.h>
+#include <math.h>
 
 float calcularPerimetro(float, float);
 float calcularArea(float, float);
 
 float area, perimetro;
 
-float calcularPerimetro(float pBase, float pAltura){
-	return perimetro = (float) (pBase*2) + (pAltura*2);
+float calcularPerimetro(float pBase, float pAltura)
+{
+	return perimetro = (float)(pBase * 2) + (pAltura * 2);
 }
 
-float calcularArea(float pBase, float pAltura){
-	return area = (float) (pBase * pAltura);
+float calcularArea(float pBase, float pAltura)
+{
+	return area = (float)(pBase * pAltura);
 }
-
-
