@@ -1,13 +1,13 @@
-/*Escribir una funciï¿½n que permita encontrar un valor en un arreglo de nï¿½meros reales,
-segï¿½n el mï¿½todo de bï¿½squeda binaria.
-La funciï¿½n debe devolver true en el caso que el elemento a buscar
-exista dentro del arreglo y false en caso contrario.
-Probar la funciï¿½n en el bloque principal de un programa C.
+/*Escribir una función que permita encontrar un valor en un arreglo de números reales, 
+según el método de búsqueda binaria. 
+La función debe devolver true en el caso que el elemento a buscar 
+exista dentro del arreglo y false en caso contrario. 
+Probar la función en el bloque principal de un programa C.
 */
 
-#include <stdio.h>
-#include <stdbool.h>
-#include <locale.h>
+#include<stdio.h>
+#include<stdbool.h>
+#include<locale.h>
 #define MAX 5
 
 typedef float tVector[MAX];
@@ -21,14 +21,12 @@ void iniciarPrograma();
 
 tVector vector;
 
-int main()
-{
+int main(){
 	iniciarPrograma();
 	return 0;
 }
 
-void cargarVector(tVector pVector)
-{
+void cargarVector(tVector pVector){
 	pVector[0] = 10.2;
 	pVector[1] = 12.7;
 	pVector[2] = 26.8;
@@ -36,58 +34,46 @@ void cargarVector(tVector pVector)
 	pVector[4] = 89.9;
 }
 
-bool busquedaBinaria(tVector pVector, float pElem)
-{
+bool busquedaBinaria(tVector pVector, float pElem){
 	int exInf = 0;
 	int extSup = MAX;
 	int posMed;
-
+	
 	bool elemento = false;
-
-	while ((!elemento) && (extSup >= exInf))
-	{
+	
+	while((!elemento) && (extSup >= exInf)){
 		posMed = (extSup + exInf) / 2;
-		if (pElem == pVector[posMed])
-		{
+		if(pElem == pVector[posMed]){
 			elemento = true;
-		}
-		else
-		{
-			if (pElem > pVector[posMed])
-			{
+		}else{
+			if(pElem > pVector[posMed]){
 				exInf = posMed + 1;
-			}
-			else
-			{
+			}else{
 				extSup = posMed - 1;
 			}
 		}
 	}
-
+	
 	return elemento;
 }
 
-void ingresarElemBuscar()
-{
+void ingresarElemBuscar(){
 	float buscar;
 	printf("\nDigite el elemento a buscar: ");
 	scanf("%f", &buscar);
 	printf("\n\nExiste 1, NO existe 0: %d", busquedaBinaria(vector, buscar));
 }
 
-void mostrarVector(tVector pVector)
-{
+void mostrarVector(tVector pVector){
 	int i;
 	printf("Elementos en el vector:\n");
-	for (i = 0; i < MAX; i++)
-	{
+	for(i=0;i<MAX;i++){
 		printf("%.2f\n", pVector[i]);
 	}
 	printf("\n");
 }
 
-void iniciarPrograma()
-{
+void iniciarPrograma(){
 	setlocale(LC_ALL, "spanish");
 	cargarVector(vector);
 	ingresarElemBuscar();

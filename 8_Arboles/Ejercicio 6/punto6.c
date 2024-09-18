@@ -1,37 +1,36 @@
-/*Escribir un programa que permita crear un ï¿½rbol binario de bï¿½squeda,
-el contenido de los nodos debe ser de tipo real.
-Incluir los procedimientos para insertar, devolver el nï¿½mero de nodos y recorrer el ï¿½rbol.
+/*Escribir un programa que permita crear un árbol binario de búsqueda, 
+el contenido de los nodos debe ser de tipo real. 
+Incluir los procedimientos para insertar, devolver el número de nodos y recorrer el árbol.
 
-a) El procedimiento Insertar debe emitir una leyenda 'Es un hijo izquierdo' o 'Es un hijo derecho',
-segï¿½n corresponda.
-b) Escribir la funciï¿½n que devuelva el nï¿½mero de nodos del ï¿½rbol binario.
-c) El procedimiento Recorrer debe mostrar el contenido del nodo, siguiendo algï¿½n recorrido en profundidad.
+a) El procedimiento Insertar debe emitir una leyenda 'Es un hijo izquierdo' o 'Es un hijo derecho', 
+según corresponda.
+b) Escribir la función que devuelva el número de nodos del árbol binario.
+c) El procedimiento Recorrer debe mostrar el contenido del nodo, siguiendo algún recorrido en profundidad.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
-#include <locale.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
+#include<string.h>
+#include<locale.h>
 
 typedef float tElem;
 
-typedef struct nodoArbol
-{
+typedef struct nodoArbol{
 	tElem contenido;
-	struct nodoArbol *hijoIzdo;
-	struct nodoArbol *hijoDcho;
-} tArbol;
+	struct nodoArbol * hijoIzdo;
+	struct nodoArbol * hijoDcho;
+}tArbol;
 
-tArbol *arbol;
+tArbol * arbol;
 float elemento;
 
 void crearArbol(tArbol *);
 bool arbolVacio(tArbol *);
-tArbol *subIzq(tArbol *);
-tArbol *subDcho(tArbol *);
+tArbol * subIzq(tArbol *);
+tArbol * subDcho(tArbol *);
 void inOrden(tArbol *);
-void insertar(tArbol **, float);
+void insertar(tArbol ** , float);
 
 void ingresarDatos();
 void iniciarPrograma();
@@ -39,147 +38,125 @@ void mostrarMenu();
 void menu();
 int consultarNumNodos(tArbol *);
 
-int main()
-{
+int main(){
 	iniciarPrograma();
 	return 0;
 }
 
-void crearArbol(tArbol *pArbol)
-{
+void crearArbol(tArbol * pArbol){
 	pArbol = NULL;
 }
 
-bool arbolVacio(tArbol *pArbol)
-{
+bool arbolVacio(tArbol * pArbol){
 	return pArbol == NULL;
 }
 
-tArbol *subIzq(tArbol *pArbol)
-{
+tArbol * subIzq(tArbol * pArbol){
 	return pArbol->hijoIzdo;
 }
 
-tArbol *subDcho(tArbol *pArbol)
-{
+tArbol * subDcho(tArbol * pArbol){
 	return pArbol->hijoDcho;
 }
-void inOrden(tArbol *pArbol)
-{
-	if (pArbol != NULL)
-	{
+void inOrden(tArbol * pArbol){
+	if(pArbol != NULL){
 		inOrden(pArbol->hijoIzdo);
 		printf("%d ", pArbol->contenido);
 		inOrden(pArbol->hijoDcho);
 	}
 }
 
-void insertar(tArbol **pArbol, float pNum)
-{
-	if (arbolVacio(*pArbol))
-	{
+void insertar(tArbol ** pArbol, float pNum){
+	if(arbolVacio(*pArbol)){
 		(*pArbol) = malloc(sizeof(tArbol));
-		if ((*pArbol) != NULL)
-		{
+		if((*pArbol) != NULL){
 			(*pArbol)->contenido = pNum;
 			(*pArbol)->hijoIzdo = NULL;
 			(*pArbol)->hijoDcho = NULL;
-		}
-		else
-		{
+		}else{
 			printf("No hay memoria disponile.\n", pNum);
 		}
-	}
-	else
-	{
-		if (pNum < (*pArbol)->contenido)
-		{
+	}else{
+		if(pNum < (*pArbol)->contenido){
 			insertar(&((*pArbol)->hijoIzdo), pNum);
-		}
-		else
-		{
-			if (pNum > (*pArbol)->contenido)
-			{
-				insertar(&((*pArbol)->hijoDcho), pNum);
-			}
-			else
-			{
+		}else{
+			if(pNum > (*pArbol)->contenido){
+				insertar(&((*pArbol)->hijoDcho), pNum);	
+			}else{
 				printf("Valor duplicado!\n");
 			}
 		}
 	}
 }
 
-void ingresarDatos()
-{
+void ingresarDatos(){
 
 	int opc;
-	/*	do{*/
-	printf("\nDigite un nï¿½mero real: ");
-	scanf("%f", &elemento);
-	insertar(&arbol, elemento);
-	/*		printf("\nDesea agregar otro nï¿½mero? (1-so/2-no): ");
-			scanf("%d", &opc);
-		}while(opc != 2);*/
+/*	do{*/
+		printf("\nDigite un número real: ");
+		scanf("%f", &elemento);
+		insertar(&arbol, elemento);
+/*		printf("\nDesea agregar otro número? (1-so/2-no): ");
+		scanf("%d", &opc);	
+	}while(opc != 2);*/
 }
-void iniciarPrograma()
-{
+void iniciarPrograma(){
 	setlocale(LC_ALL, "spanish");
 	crearArbol(arbol);
 	mostrarMenu();
 }
 
-void mostrarMenu()
-{
+void mostrarMenu(){
 	int opcion = 0;
-	do
-	{
+	do{
 		menu();
 		scanf("%d", &opcion);
-
-		switch (opcion)
-		{
-		case 1:
-			ingresarDatos();
-			printf("\n\n");
-			system("pause");
-			break;
-		case 2:
-			consultarNumNodos(arbol);
-			printf("\n\n");
-			system("pause");
-			break;
-		case 3:
-			inOrden(arbol);
-			printf("\n\n");
-			system("pause");
-			break;
-		case 4:
-			printf("\n\t\t---SALIENDO DEL MENï¿½---");
-			printf("\n\n");
-			system("pause");
-			break;
-		default:
-			printf("\n\n\t\t---OPCIï¿½N INCORRECTA. DIGITE SOLO LAS OPCIONES DADAS EN EL MENï¿½---");
-			printf("\n\n");
-			system("pause");
-			break;
+		
+		switch(opcion){
+			case 1:
+			        ingresarDatos();
+			        printf("\n\n");
+			        system("pause");
+			        break;
+			case 2:
+				    consultarNumNodos(arbol);
+			        printf("\n\n");
+			        system("pause");
+			        break;					
+			case 3:
+				    inOrden(arbol);
+			        printf("\n\n");
+			        system("pause");
+			        break;				   
+			case 4:
+					printf("\n\t\t---SALIENDO DEL MENÚ---");
+			        printf("\n\n");
+			        system("pause");
+			        break;	
+			default:
+				    printf("\n\n\t\t---OPCIÓN INCORRECTA. DIGITE SOLO LAS OPCIONES DADAS EN EL MENÚ---");
+			        printf("\n\n");
+			        system("pause");
+			        break;
 		}
 		system("cls");
-	} while (opcion != 4);
+	}while(opcion != 4);
 }
 
-void menu()
-{
-	printf("\t\tMENï¿½");
-	printf("\n\t\t1.Insertar elemento.\n\t\t2.Consultar nï¿½mero de nodos del ï¿½rbol.\n\t\t3.Recorrer ï¿½rbol.\n\t\t4.Salir del menï¿½.");
-	printf("\n\n\t\tDigite una opciï¿½n: ");
+void menu(){
+	printf("\t\tMENÚ");
+	printf("\n\t\t1.Insertar elemento.\n\t\t2.Consultar número de nodos del árbol.\n\t\t3.Recorrer árbol.\n\t\t4.Salir del menú.");
+	printf("\n\n\t\tDigite una opción: ");
 }
 
-int consultarNumNodos(tArbol *pArbol)
-{
-	if (!arbolVacio(pArbol))
-	{
+int consultarNumNodos(tArbol * pArbol){
+	if(!arbolVacio(pArbol)){
 		return consultarNumNodos(pArbol->hijoIzdo) + 1 + consultarNumNodos(pArbol->hijoDcho);
 	}
 }
+
+
+
+
+
+

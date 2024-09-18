@@ -1,17 +1,17 @@
-/*Escribir un programa que permita ingresar por teclado la cantidad de elementos de un vector,
-y cada uno de los valores de los elementos del vector.
-Ademï¿½s, escribir funciones para obtener:
+/*Escribir un programa que permita ingresar por teclado la cantidad de elementos de un vector, 
+y cada uno de los valores de los elementos del vector. 
+Además, escribir funciones para obtener:
 
-a) el mï¿½ximo valor almacenado en el vector
-b) el mï¿½nimo valor almacenado en el vector
+a) el máximo valor almacenado en el vector
+b) el mínimo valor almacenado en el vector
 c) la media de todos los valores
-d) la semisuma (promedio entre el mï¿½ximo y mï¿½nimo).
+d) la semisuma (promedio entre el máximo y mínimo).
 */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <locale.h>
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<locale.h>
 #define MAX 10
 
 int mayorElemento(int);
@@ -24,66 +24,55 @@ void mostraResultados();
 void iniciarPrograma();
 
 int vectorNum[MAX];
-int vector;
+int vector; 
 
-int main()
-{
+int main(){
 	iniciarPrograma();
 	return 0;
 }
 
-int mayorElemento(int pVector)
-{
+int mayorElemento(int pVector){
 	int i;
 	int mayor = pVector[0];
-	for (i = 0; i <= MAX; i++)
-	{
-		if (pVector[i] < mayor)
-		{
+	for(i=0;i<=MAX;i++){
+		if(pVector[i] < mayor){
 			mayor = pVector[i];
 		}
 	}
 	return mayor;
 }
 
-int menorElemento(int pVector)
-{
+int menorElemento(int pVector){
 	int i;
 	int menor = pVector[0];
-	for (i = 0; i <= MAX; i++)
-	{
-		if (pVector[i] < menor)
-		{
+	for(i=0;i<=MAX;i++){
+		if(pVector[i] < menor){
 			menor = pVector[i];
-		}
+		}		
 	}
 	return menor;
 }
 
-int mediaDeValores(int pVector)
-{
+int mediaDeValores(int pVector){
+	
 }
 
-int obtenerPromedio(int pVector)
-{
-	int i, caja = 0, promedio;
-	for (i = 0; i <= pVector; i++)
-	{
+int obtenerPromedio(int pVector){
+	int i, caja=0, promedio;
+	for(i=0;i<=pVector;i++){
 		caja = caja + pVector[i];
 	}
 	promedio = caja / pVector;
 	return promedio;
 }
 
-void ingresarDatos()
-{
+void ingresarDatos(){
 	int i;
-	printf("\Digite el nï¿½mero de elementos del vector (MAXIMO 10): ");
+	printf("\Digite el número de elementos del vector (MAXIMO 10): ");
 	scanf("%d", &vector);
-
-	for (i = 0; i < vector; i++)
-	{
-		printf("\nDigite los nï¿½meros: ");
+	
+	for(i=0;i<vector;i++){
+		printf("\nDigite los números: ");
 		scanf("%d", &numeros[i]);
 	}
 	menorElemento(vector);
@@ -92,17 +81,16 @@ void ingresarDatos()
 	obtenerPromedio(vector);
 }
 
-void mostraResultados()
-{
-	printf("\nEl mï¿½ximo valor almacenado en el vector es: %d", mayorElemento(vector));
-	printf("\nEl mï¿½nimo valor almacenado en el vector es: %d", menorElemento(vector));
+void mostraResultados(){
+	printf("\nEl máximo valor almacenado en el vector es: %d", mayorElemento(vector));
+	printf("\nEl mínimo valor almacenado en el vector es: %d", menorElemento(vector));
 	printf("\nLa media de todos los valores en el vector es: %d", mediaDeValores(vector));
-	printf("\nLa semisuma (promedio entre el mï¿½ximo y mï¿½nimo) es: %d", obtenerPromedio(vector));
+	printf("\nLa semisuma (promedio entre el máximo y mínimo) es: %d", obtenerPromedio(vector));
 }
 
-void iniciarPrograma()
-{
+void iniciarPrograma(){
 	setlocale(LC_ALL, "spanish");
 	ingresarDatos();
 	mostraResultados();
 }
+
